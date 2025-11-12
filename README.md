@@ -59,4 +59,4 @@ The following high-priority, multi-domain control recommendations were proposed 
 * **Data Classification:** Understanding and applying principles of PII and SPII protection.
 
 ### **Note**
-* **The main assessment file, along with all the additional files mentioned inside it, are included in this GitHub repo.**
+* **The main assessment file, along with all the additional files mentioned, are included in this GitHub repo.**
