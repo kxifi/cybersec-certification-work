@@ -7,15 +7,15 @@ This README summarizes the findings regarding a recent network interruption that
 
 | Detail | Value | Source |
 | :--- | :--- | :--- |
-| **Attack Type** | [cite_start]Denial-of-Service (DoS) Attack | [cite: 1] |
-| **Specific Technique** | [cite_start]Persistent SYN requests (SYN Flood) | [cite: 1] |
-| **Attacker IP Address** | [cite_start]`203.0.113.0` | [cite: 1, 2, 3] |
-| **Target/Company Server IP** | [cite_start]`192.0.2.1` (Port 443) | [cite: 2, 3] |
-| **Impact** | [cite_start]Website connection timeout errors, servers throttled/overloaded, inability to respond to legitimate users, halting of all business operations[cite: 1]. [cite_start]| [cite: 1, 2, 3] |
+| **Attack Type** | Denial-of-Service (DoS) Attack | [cite: 1] |
+| **Specific Technique** | Persistent SYN requests (SYN Flood) | [cite: 1] |
+| **Attacker IP Address** | `203.0.113.0` | [cite: 1, 2, 3] |
+| **Target/Company Server IP** | `192.0.2.1` (Port 443) | [cite: 2, 3] |
+| **Impact** | Website connection timeout errors, servers throttled/overloaded, inability to respond to legitimate users, halting of all business operations[cite: 1]. | [cite: 1, 2, 3] |
 
 ## 3. Technical Attack Mechanism
 
-[cite_start]The attack exploits the TCP (Transmission Control Protocol) three-way handshake process used to establish a connection between a user (client) and the web server[cite: 1].
+The attack exploits the TCP (Transmission Control Protocol) three-way handshake process used to establish a connection between a user (client) and the web server[cite: 1].
 
 * [cite_start]**Normal Connection:** A legitimate user sends a **SYN** (synchronize) request, the server responds with a **SYN-ACK**, and the user finalizes the connection with an **ACK** (acknowledge) request[cite: 1].
 * [cite_start]**Attack Action:** The attacker's IP address (`203.0.113.0`) persistently sends a high volume of **SYN** requests—approximately 2-3 per second—to the company website (`192.0.2.1`)[cite: 1].
