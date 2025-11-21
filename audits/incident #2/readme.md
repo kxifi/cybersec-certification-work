@@ -1,32 +1,54 @@
-# README: Cybersecurity Incident Analysis - Denial-of-Service (DoS)
+# 🛡️ Cybersecurity Incident Analysis: DDoS Attack Mitigation Plan
 
-## 1. Overview
-This README summarizes the findings regarding a recent network interruption that caused the company website to display a timeout error message to users[cite: 1]. The incident has been identified as a Denial-of-Service (DoS) attack, specifically a SYN flood, that overloaded the company servers and halted internet-based business operations.
+This repository contains the analysis and mitigation plan for a simulated Distributed Denial of Service (DDoS) incident, structured according to the **National Institute of Standards and Technology (NIST) Cybersecurity Framework (CSF)**.
 
-## 2. Key Findings
+## 🎯 Project Goal
 
-| Detail | Value | Source |
+To apply the five core functions of the NIST CSF—**Identify, Protect, Detect, Respond, and Recover**—to a specific network security event. The primary objective is to transition from incident response actions to a comprehensive, long-term security strategy.
+
+---
+
+## 💻 Incident Scenario Summary
+
+| Detail | Description |
+| :--- | :--- |
+| **Organization** | Multimedia company offering web design, graphic design, and social media marketing. |
+| **Attack Type** | Distributed Denial of Service (DDoS) via **ICMP Flood**. |
+| **Impact** | Internal network compromised for **two hours**; all network services stopped. |
+| **Root Cause** | Vulnerability due to an **unconfigured firewall**. |
+| **Initial Response** | Blocking incoming ICMP packets; stopping non-critical services; restoring critical services. |
+
+---
+
+## 📊 NIST CSF Application Summary
+
+The following plan outlines the strategic and tactical measures required to address the DDoS incident and improve the organization’s security posture.
+
+| CSF Function | Focus | Key Actions in Plan |
 | :--- | :--- | :--- |
-| **Attack Type** | Denial-of-Service (DoS) Attack | [cite: 1] |
-| **Specific Technique** | Persistent SYN requests (SYN Flood) | [cite: 1] |
-| **Attacker IP Address** | `203.0.113.0` | [cite: 1, 2, 3] |
-| **Target/Company Server IP** | `192.0.2.1` (Port 443) | [cite: 2, 3] |
-| **Impact** | Website connection timeout errors, servers throttled/overloaded, inability to respond to legitimate users, halting of all business operations[cite: 1]. | [cite: 1, 2, 3] |
+| **1. Identify** | **Risk Management & Asset Inventory** | Focus shifts to **regular audits** of all network systems and firewall configurations to proactively identify and close security gaps before they are exploited. |
+| **2. Protect** | **Long-Term Safeguards & Policies** | Implementation of **permanent controls** including a new firewall rule to **limit ICMP packet rates**, an **IDS/IPS system for filtering**, and establishing new **policies and training** for secure firewall configuration. |
+| **3. Detect** | **Monitoring & Alerting** | Implementation of tools designed for surveillance: **Source IP address verification** (to check for spoofing) and **network monitoring software** to continuously detect and flag abnormal traffic patterns. |
+| **4. Respond** | **Containment & Investigation** | Procedures for **isolating affected systems** (Mitigation), **analyzing network logs** (Analysis) for forensic data, and **reporting** all incidents to management and legal authorities (Communications). |
+| **5. Recover** | **Service Restoration & Business Continuity** | A systematic process for restoring operations, prioritizing the restoration of **critical network services first**, followed by non-critical services once the threat has subsided. Includes communication plans for restoration updates. |
 
-## 3. Technical Attack Mechanism
+---
 
-The attack exploits the TCP (Transmission Control Protocol) three-way handshake process used to establish a connection between a user (client) and the web server[cite: 1].
+## 💡 Key Learnings and Framework Distinction
 
-* [cite_start]**Normal Connection:** A legitimate user sends a **SYN** (synchronize) request, the server responds with a **SYN-ACK**, and the user finalizes the connection with an **ACK** (acknowledge) request[cite: 1].
-* [cite_start]**Attack Action:** The attacker's IP address (`203.0.113.0`) persistently sends a high volume of **SYN** requests—approximately 2-3 per second—to the company website (`192.0.2.1`)[cite: 1].
-* **Result (DoS):** This flood of SYN requests quickly consumes the network's bandwidth and overloads the server. [cite_start]Because the server is throttled and busy processing the malicious requests, it is unable to complete the handshake process (send SYN-ACK) to legitimate users, resulting in a denial of service for all normal traffic[cite: 1].
+The exercise highlighted a critical concept in cybersecurity analysis: the distinction between the five NIST CSF functions, particularly separating **proactive** from **reactive** measures.
 
-## 4. Data Source Reference
+| Incorrect Placement (Common Error) | Correct Placement (NIST Principle) |
+| :--- | :--- |
+| Placing firewall rules and IDS/IPS filtering in **Detect** or **Respond**. | These are **Protect**ive measures; they actively block or prevent the attack. |
+| Placing "blocking traffic" or "stopping non-critical services" in **Protect**. | These are **Respond** (Mitigation) or **Recover** actions; they are performed *during* or *immediately after* an active attack. |
+| Including data loss or phishing advice in the **Recover** section of a DDoS report. | **Recover** must focus strictly on **restoring the affected asset** (network service restoration in this case), not speculative, unrelated data issues. |
 
-The analysis and conclusions are based on the following files in this folder:
+---
 
-**`Cybersecurity-incident-report-2.docx`**: Provides the primary analysis, attack identification, explanation of the mechanism, and identification of the attacker IP (`203.0.113.0`)
-**`HTTP-log.xlsx - TCP log.csv` / `HTTP-log.xlsx - Color coded TCP log.csv`**: Contains the raw network traffic log data confirming the attack activity.
-Log entries colored **red** indicate the attack activity.
-The logs show persistent `[SYN]` requests from the source IP `203.0.113.0` to the destination IP `192.0.2.1`.
-Log entries colored **yellow** indicate normal TCP connections failing due to the attack.
+## 🗂️ Files and Resources
+
+* `Incident-report-analysis.docx`: Blank template for the report.
+* `Incident-report-analysis-final.docx`: Completed report (Your Draft).
+* `Incident-report-analysis-exemplar.docx`: Exemplar showing the NIST CSF applied to a similar DDoS incident.
+* `Applying-the-NIST-CSF-.docx`: Documentation of the five core NIST CSF functions.
